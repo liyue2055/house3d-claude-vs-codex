@@ -1,5 +1,7 @@
 # House 3D: Claude Code vs Codex
 
+**Live side-by-side demo:** https://liyue2055.github.io/house3d-claude-vs-codex/
+
 Two coding agents got the **same prompt** and the **same reference image** and were asked to rebuild the house in Three.js. Each one wrote a single self-contained `index.html` that loads Three.js 0.170 from unpkg through an importmap, with no build step. The 3D code in each folder is entirely the agent's own work. Neither result was edited by hand, and neither agent needed a follow-up fix prompt.
 
 **Live demos (GitHub Pages)**

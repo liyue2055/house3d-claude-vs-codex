@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>House 3D: Claude Code (Haiku) vs Codex (GPT-6 Luna)</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: #0d1117; color: #e6edf3; display: flex; flex-direction: column; height: 100vh; }
+  header { padding: 12px 20px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; border-bottom: 1px solid #30363d; }
+  header h1 { font-size: 18px; margin: 0; }
+  header img { height: 64px; border-radius: 6px; border: 1px solid #30363d; }
+  header a { color: #58a6ff; text-decoration: none; font-size: 14px; }
+  main { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #30363d; min-height: 0; }
+  section { background: #0d1117; display: flex; flex-direction: column; min-height: 0; }
+  section h2 { font-size: 14px; margin: 0; padding: 8px 14px; display: flex; justify-content: space-between; background: #161b22; }
+  section h2 span { color: #8b949e; font-weight: normal; }
+  iframe { flex: 1; width: 100%; border: 0; min-height: 0; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; } section { height: 70vh; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="house-design.jpg" alt="Reference house design">
+  <h1>Image to 3D house in Three.js: Claude Code vs Codex</h1>
+  <a href="https://github.com/liyue2055/house3d-claude-vs-codex">Repo and comparison README</a>
+</header>
+<main>
+  <section>
+    <h2>Claude Code <span>anthropic/claude-haiku-5.5 · <a href="claude-code/" target="_blank">fullscreen</a></span></h2>
+    <iframe src="claude-code/" title="Claude Code house" loading="eager"></iframe>
+  </section>
+  <section>
+    <h2>Codex <span>openai/gpt-6-luna · <a href="codex/" target="_blank">fullscreen</a></span></h2>
+    <iframe src="codex/" title="Codex house" loading="eager"></iframe>
+  </section>
+</main>
+</body>
+</html>
