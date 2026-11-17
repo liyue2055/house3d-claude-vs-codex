@@ -1,0 +1,136 @@
+Agent: Claude Code (via OpenRouter Ori 0.17)
+Model: anthropic/claude-haiku-5.5
+Command: ori claude --model anthropic/claude-haiku-5.5 -- -p "<PROMPT>" --dangerously-skip-permissions --output-format json
+Wall time: exit=0 dur=161s  (duration_ms reported: 158593)
+Turns: 12
+Cost (reported): $0.0296
+Tokens: input 18, cache-write 47186, cache-read 362525, output 33041 (of which thinking 23403)
+Follow-up fix prompts: none
+
+=== PROMPT ===
+You are working in the current directory, which contains reference.jpg: a photo-realistic render of a modern 2-story house (read/view the image file reference.jpg). Your task: build a single self-contained index.html in this directory (plus an optional main.js next to it) that renders this house in 3D with Three.js loaded from a CDN via an importmap (use https://unpkg.com/three@0.170.0/build/three.module.js and https://unpkg.com/three@0.170.0/examples/jsm/ for addons). No build step, no npm.
+
+Recreate the house in reference.jpg as faithfully as possible using primitive geometry:
+- correct massing: white stucco ground floor; upper box clad in vertical cedar/wood boards with a dark thin parapet/cap, cantilevered over the left side to form a covered carport/garage with a dark garage door
+- materials and colors (a procedural canvas-generated vertical wood-slat texture is welcome)
+- large black-framed floor-to-ceiling windows with mullions/frames; a vertical wood-slat front door on the right with a black handle
+- wide concrete front steps and a path
+- flat roof with a small rooftop terrace with a glass railing
+- a low hedge and two small trees
+- light gray ground plane
+- soft lighting and shadows (hemisphere + directional light with shadow maps)
+- OrbitControls
+- an initial camera matching the reference image's 3/4 front view (front facade facing viewer, left side slightly visible, seen from slightly above eye level)
+It must load in a browser with no console errors. Write the files to disk now, and do not ask questions. When done, briefly summarize what you built.
+
+=== RAW STDOUT (JSON) ===
+{
+ "duration_api_ms": 151456,
+ "stop_reason": "end_turn",
+ "session_id": "eb58c87d-e009-4c00-a391-908448bd8587",
+ "total_cost_usd": 0.02958475,
+ "usage": {
+  "input_tokens": 18,
+  "cache_creation_input_tokens": 47186,
+  "cache_read_input_tokens": 362525,
+  "output_tokens": 33041,
+  "output_tokens_details": {
+   "thinking_tokens": 23403
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 47186,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "modelUsage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 18,
+   "outputTokens": 33041,
+   "cacheReadInputTokens": 362525,
+   "cacheCreationInputTokens": 47186,
+   "webSearchRequests": 0,
+   "costUSD": 0.02958475,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 23403,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 47186,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ },
+ "permission_denials": [],
+ "terminal_reason": "completed",
+ "fast_mode_state": "off",
+ "fast_mode_disabled_reason": "model_not_allowed",
+ "subagent_stats": {
+  "spawned": 0,
+  "requested": {
+   "background": 0,
+   "foreground": 0,
+   "unset": 0
+  },
+  "started_in_background": 0,
+  "max_depth": 0,
+  "spawned_by_subagents": 0,
+  "completed": 0,
+  "failed": 0,
+  "killed": {
+   "parent": 0,
+   "user": 0,
+   "system": 0
+  },
+  "refused": {
+   "depth_limit": 0,
+   "concurrency_limit": 0,
+   "budget": 0
+  },
+  "by_type": {}
+ },
+ "safety_stops": 0,
+ "is_error": false,
+ "num_turns": 12,
+ "subtype": "success",
+ "api_error_status": null,
+ "result": "I built the house as a single self-contained `index.html` in `/workspace/house3d/claude-code/`. I did not create a separate `main.js`: browsers block module scripts loaded from `file://`, so the code is inline and the page opens directly.\n\nI loaded it in headless Chrome. It rendered with no page errors; the only console output was WebGL performance notices from the software renderer.\n\nWhat's in the scene:\n- **Massing:** white stucco ground floor with a 3.3 m front plane, and a wood upper box cantilevered over a covered carport on the left with a dark garage door.\n- **Upper box:** a procedural canvas wood-slat texture with a dark cap on top.\n- **Glazing:** black-framed windows with mullions and a transom; a wood-slat front door with a black handle.\n- **Entrance:** three concrete steps and a path.\n- **Roof:** a flat roof with a small terrace, glass railing and a grey bulkhead.\n- **Landscaping:** a low hedge and two small trees.\n- **Environment:** a light grey ground plane, hemisphere plus directional light with soft shadow maps, and OrbitControls.\n\nChoices to review:\n- **Camera:** it sits front-right at about 9.0, 6.4, 19.5 and looks at the house centre. The reference shows the right side face rather than the left, so the left carport is more foreshortened than in the reference. Shifting the camera to the left is a one-line change.\n- **Carport detail:** the garage door is recessed and mostly hidden from this angle.\n- **Dimensions:** I estimated them from pixel positions in the reference, so proportions are approximate.\n\nI did not commit anything.",
+ "ttft_ms": 1362,
+ "type": "result",
+ "duration_ms": 158593,
+ "uuid": "cf4e480a-c2ad-4ede-b0b3-215e62697bd4",
+ "ttft_stream_ms": 1362,
+ "time_to_request_ms": 140,
+ "first_content_frame_ms": 1362,
+ "queued_turn_count": 0,
+ "result_index": 0
+}
+
+=== FINAL MESSAGE ===
+I built the house as a single self-contained `index.html` in `/workspace/house3d/claude-code/`. I did not create a separate `main.js`: browsers block module scripts loaded from `file://`, so the code is inline and the page opens directly.
+
+I loaded it in headless Chrome. It rendered with no page errors; the only console output was WebGL performance notices from the software renderer.
+
+What's in the scene:
+- **Massing:** white stucco ground floor with a 3.3 m front plane, and a wood upper box cantilevered over a covered carport on the left with a dark garage door.
+- **Upper box:** a procedural canvas wood-slat texture with a dark cap on top.
+- **Glazing:** black-framed windows with mullions and a transom; a wood-slat front door with a black handle.
+- **Entrance:** three concrete steps and a path.
+- **Roof:** a flat roof with a small terrace, glass railing and a grey bulkhead.
+- **Landscaping:** a low hedge and two small trees.
+- **Environment:** a light grey ground plane, hemisphere plus directional light with soft shadow maps, and OrbitControls.
+
+Choices to review:
+- **Camera:** it sits front-right at about 9.0, 6.4, 19.5 and looks at the house centre. The reference shows the right side face rather than the left, so the left carport is more foreshortened than in the reference. Shifting the camera to the left is a one-line change.
+- **Carport detail:** the garage door is recessed and mostly hidden from this angle.
+- **Dimensions:** I estimated them from pixel positions in the reference, so proportions are approximate.
+
+I did not commit anything.
